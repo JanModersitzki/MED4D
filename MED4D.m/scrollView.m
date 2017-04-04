@@ -1,5 +1,5 @@
 function scrollView(img,omega,m,direction,varargin)
-% 
+
 %
 % scrollView(img,omega,m,direction,varargin)
 % ------------------------------------------------------------------------- 
