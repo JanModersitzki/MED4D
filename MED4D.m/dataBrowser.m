@@ -26,6 +26,7 @@ files = {
 	'flip08.nii.gz'
 	'flip15.nii.gz'
 	'flip25.nii.gz'
+  
 	'left-GD.mat'
 	'left-GD.nii.gz'
 	'left-aif-mask.nii.gz'
@@ -90,7 +91,7 @@ files = {
 	'timeline.txt'
 	};
 
-for k=8:length(files)
+for k=25:27%:length(files)
   filename = fullfile(dataSource,opt,files{k});
   fprintf('%4d-of-%4d is %s\n',k, length(files),files{k})
   
@@ -102,6 +103,35 @@ for k=8:length(files)
         'flip08.nii.gz'
         'flip15.nii.gz'
         'flip25.nii.gz'
+        'left-aif-mask.nii.gz'
+        'left-flip05-mcflirt.nii.gz'
+        'left-flip05-reg-ngf1-mi0-fluid.nii.gz'
+        'left-flip05.nii.gz'
+        'left-flip08-mcflirt.nii.gz'
+        'left-flip08-reg-ngf1-mi0-fluid.nii.gz'
+        'left-flip08.nii.gz'
+        'left-flip15-mcflirt.nii.gz'
+        'left-flip15-reg-ngf1-mi0-fluid.nii.gz'
+        'left-flip15.nii.gz'
+        'left-flip25-mcflirt.nii.gz'
+        'left-flip25-reg-ngf1-mi0-fluid.nii.gz'
+        'left-flip25.nii.gz'
+        'left-mask-background.nii.gz'
+        'left-mask-cortex.nii.gz'
+        'left-mcflirt-GD.mat'
+        'left-mcflirt-GD.nii.gz'
+        'left-mcflirt.nii.gz'
+        'left-mcflirt_mean_reg.nii.gz'
+        'left-reg-ngf0-mi1-fluid-GD.mat'
+        'left-reg-ngf0-mi1-fluid-GD.nii.gz'
+        'left-reg-ngf1-mi0-fluid-GD.mat'
+        'left-reg-ngf1-mi0-fluid-GD.nii.gz'
+        'left-reg-ngf1-mi0-fluid.nii.gz'
+        'left-segm-background.nii.gz'
+        'left-segm-cortex.nii.gz'
+        'left-segm-kidney.nii.gz'
+        'left.nii.gz'
+
         }
       
       fprintf('load_nii(''%s'')\n',filename);
@@ -120,22 +150,24 @@ for k=8:length(files)
       colormap(gray);
       title(filename,'interpreter','none')
       
-    case {''}
+    case {'left-GD.mat'}
+      
+    case {'left-GD.nii.gz'}
       fprintf('load_nii(''%s'')\n',filename);
       D = load_nii(filename);
-      figure(k); clf;
       I = D.img;
-      m = size(I); m = m(1:3);
-      omega = reshape([zeros(1,3);m],1,[])
-      imgmontage(I,omega,m);
-      colormap(gray);
-      title(filename,'interpreter','none')
+      m = size(I)
+      omega = reshape([zeros(1,3);m(1:3)],1,[])
+      error('tbc')
+
+      
+
     case 'README.txt'
       
     otherwise,
       error('17')
   end;
   
-  return
+  %return
 end;
 
